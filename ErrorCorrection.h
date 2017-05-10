@@ -6,13 +6,14 @@
 #include <math.h>
 
 #include "Store.h"
+#include "StoreCQF.h"
 #include "Reads.h"
 #include "utils.h"
 
 struct _ErrorCorrectionThreadArg
 {
 	int kmerLength ;
-	Store *kmers ;
+	StoreCQF *kmers ;
 	struct _Read *readBatch, *readBatch2 ;
 	int batchSize ;
 	int batchUsed ;
@@ -23,8 +24,8 @@ struct _ErrorCorrectionThreadArg
 } ;
 
 void *ErrorCorrection_Thread( void *arg )  ;
-int GetStrongTrustedThreshold( char *seq, char *qual, KmerCode &kcode, Store &kmers ) ;
-int ErrorCorrection( char *id, char *seq, char *qual, int pairStrongTrustThreshold, KmerCode &kcode, Store &kmers ) ;
-void GetKmerInformation( char *seq, int kmerLength, Store &kmers, int &l, int &m, int &h ) ;
+int GetStrongTrustedThreshold( char *seq, char *qual, KmerCode &kcode, StoreCQF &kmers ) ;
+int ErrorCorrection( char *id, char *seq, char *qual, int pairStrongTrustThreshold, KmerCode &kcode, StoreCQF &kmers ) ;
+void GetKmerInformation( char *seq, int kmerLength, StoreCQF &kmers, int &l, int &m, int &h ) ;
 
 #endif

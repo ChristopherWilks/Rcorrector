@@ -12,6 +12,7 @@
 #include "Reads.h"
 #include "KmerCode.h"
 #include "Store.h"
+#include "StoreCQF.h"
 #include "ErrorCorrection.h"
 
 char nucToNum[26] = { 0, -1, 1, -1, -1, -1, 2, 
@@ -137,7 +138,8 @@ int main( int argc, char *argv[] )
 
 	struct _summary summary ;
 
-	Store kmers ;
+	//Store kmers ;
+	StoreCQF kmers ;
 	FILE *fpJellyFishDump = NULL ;
 	char buffer[100] ;
 
