@@ -25,4 +25,4 @@ hashutil.o: hashutil.cc hashutil.h
 	$(CXX)  -o hashutil.o $(CXXFLAGS) -c hashutil.cc
 
 clean:
-	rm *.o *.gch rcorrector
+	rm *.o rcorrector
