@@ -11,8 +11,8 @@
 
 #include "Reads.h"
 #include "KmerCode.h"
-#include "Store.h"
-#include "StoreCQF.h"
+//#include "Store.h"
+#include "StoreCML.h"
 #include "ErrorCorrection.h"
 
 char nucToNum[26] = { 0, -1, 1, -1, -1, -1, 2, 
@@ -137,9 +137,13 @@ int main( int argc, char *argv[] )
 	Reads pairedReads ;
 
 	struct _summary summary ;
+	
+	//CML PARAMS
+	size_t D=10,W=100000,Bits_c=16;
+	CMLSketch cml(D, W*4, Bits_c, 1.08, 255);
 
 	//Store kmers ;
-	StoreCQF kmers ;
+	StoreCML kmers (&cml);
 	FILE *fpJellyFishDump = NULL ;
 	char buffer[100] ;
 

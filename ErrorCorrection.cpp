@@ -141,7 +141,7 @@ inline double GetBound( int c )
 	return c * ERROR_RATE  + 6.0 * sqrt( c  * ERROR_RATE ) + 1 ;
 }
 
-int InferPosThreshold( KmerCode &kcode, StoreCQF &kmers, int direction, int upperBound ) // -1:left, 1:right
+int InferPosThreshold( KmerCode &kcode, StoreCML &kmers, int direction, int upperBound ) // -1:left, 1:right
 {
 	int i ;
 	int ret ;
@@ -172,7 +172,7 @@ int InferPosThreshold( KmerCode &kcode, StoreCQF &kmers, int direction, int uppe
 		return upperBound ;
 }
 
-bool TestExtend( int t, KmerCode kcode, int depth, int direction, StoreCQF &kmers )
+bool TestExtend( int t, KmerCode kcode, int depth, int direction, StoreCML &kmers )
 {
 	int i ;
 	KmerCode tmpKcode( kcode ) ;
@@ -200,7 +200,7 @@ bool TestExtend( int t, KmerCode kcode, int depth, int direction, StoreCQF &kmer
 // Return how many possible candidates
 void SearchPaths_Right( int start, int to, int pos, int t, bool isPaired, char *seq, int fixCnt, int *fix, int fixBottleNeck,
 	int &maxFixCnt, int *bestFix, int &bestFixCnt, int &bestFixBottleNeck, int top2FixBottleNeck[], bool isStrongTrusted[], bool isPolyAKmer[],
-	KmerCode &kcode, StoreCQF &kmers, int &trialCnt )
+	KmerCode &kcode, StoreCML &kmers, int &trialCnt )
 {
 	int i, cnt, tmpBottleNeck ;
 	int extension = 0 ;
@@ -447,7 +447,7 @@ void SearchPaths_Right( int start, int to, int pos, int t, bool isPaired, char *
 
 void SearchPaths_Left( int start, int to, int pos, int t, bool isPaired, char *seq, int fixCnt, int *fix, int fixBottleNeck, 
 	int &maxFixCnt, int *bestFix, int &bestFixCnt, int &bestFixBottleNeck, int top2FixBottleNeck[], bool isStrongTrusted[], bool isPolyAKmer[], 
-	KmerCode &kcode, StoreCQF &kmers, int &trialCnt )
+	KmerCode &kcode, StoreCML &kmers, int &trialCnt )
 {
 	int i, cnt, tmpBottleNeck ;
 	int extension = 0 ;
@@ -683,7 +683,7 @@ void SearchPaths_Left( int start, int to, int pos, int t, bool isPaired, char *s
 
 
 
-int ErrorCorrection( char *id, char *seq, char *qual, int pairStrongTrustThreshold, KmerCode &kcode, StoreCQF &kmers )
+int ErrorCorrection( char *id, char *seq, char *qual, int pairStrongTrustThreshold, KmerCode &kcode, StoreCML &kmers )
 {
 	//printf( "Correct %s\n", seq ) ; fflush( stdout ) ;
 
@@ -1483,7 +1483,7 @@ int ErrorCorrection( char *id, char *seq, char *qual, int pairStrongTrustThresho
 	return ret ;
 }
 
-int GetStrongTrustedThreshold( char *seq, char *qual, KmerCode &kcode, StoreCQF &kmers ) 
+int GetStrongTrustedThreshold( char *seq, char *qual, KmerCode &kcode, StoreCML &kmers ) 
 {
 	int i, k ;
 	int kcnt = 0 ;
@@ -1565,7 +1565,7 @@ int GetStrongTrustedThreshold( char *seq, char *qual, KmerCode &kcode, StoreCQF 
 
 }
 
-void GetKmerInformation( char *seq, int kmerLength, StoreCQF &kmers, int &l, int &m, int &h )
+void GetKmerInformation( char *seq, int kmerLength, StoreCML &kmers, int &l, int &m, int &h )
 {
 	int kmerCount[MAX_READ_LENGTH] ;
 	int i ;

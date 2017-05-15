@@ -4,7 +4,7 @@ LINKFLAGS = -I . -lpthread -lz
 DEBUG=
 jellyfishPath = `which jellyfish`
 jellyfishVersion = `jellyfish --version | cut -f2 -d' ' | cut -f1 -d'.'`
-OBJECTS = gqf.o hashutil.o KmerCode.o ErrorCorrection.o
+OBJECTS = BOBHash.o cmlsketch.o KmerCode.o ErrorCorrection.o
 all: main.o $(OBJECTS)
 	$(CXX) -o rcorrector $(CXXFLAGS) $(OBJECTS) main.o $(LINKFLAGS)
 	if [ ! $(jellyfishPath) ] || [ $(jellyfishVersion) -ne 2 ] ; \
@@ -16,13 +16,11 @@ all: main.o $(OBJECTS)
 		fi;\
 	fi ;
 
-main.o: main.cpp utils.h Reads.h Store.h hashutil.h StoreCQF.h
+main.o: main.cpp utils.h Reads.h Store.h StoreCML.h cmlsketch.h
 KmerCode.o: KmerCode.cpp KmerCode.h 
 ErrorCorrection.o: ErrorCorrection.cpp ErrorCorrection.h
-gqf.o: gqf.c gqf.h
-	$(CXX)  -o gqf.o $(CXXFLAGS) -c gqf.c
-hashutil.o: hashutil.cc hashutil.h
-	$(CXX)  -o hashutil.o $(CXXFLAGS) -c hashutil.cc
+cmlsketch.o: cmlsketch.cpp cmlsketch.h bench_config.h bench_common.h define.h BOBHash.h
+BOBHash.o: BOBHash.cpp BOBHash.h
 
 clean:
 	rm *.o *.gch rcorrector
