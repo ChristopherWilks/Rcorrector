@@ -23,4 +23,4 @@ cmlsketch.o: cmlsketch.cpp cmlsketch.h bench_config.h bench_common.h define.h BO
 BOBHash.o: BOBHash.cpp BOBHash.h
 
 clean:
-	rm *.o *.gch rcorrector
+	rm *.o rcorrector
