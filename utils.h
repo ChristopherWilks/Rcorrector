@@ -4,10 +4,14 @@
 #include <stdint.h>
 
 
-#define MAX_READ_LENGTH 1024 
-#define MAX_ID_LENGTH 2048
+#define MAX_READ_LENGTH 1024
+#define MAX_ID_LENGTH 512
 
-#define INF 1000000000
+// By changing this definition, the user can use longer kmer length.
+// Using longer kmer does NOT mean better accuracy!!
+#define MAX_KMER_LENGTH 32
+
+#define READ_BUFFER_PER_THREAD 1024
 /*char nucToNum[26] = { 0, -1, 1, -1, -1, -1, 2, 
 	-1, -1, -1, -1, -1, -1, -1,
 	-1, -1, -1, -1, -1, 3,

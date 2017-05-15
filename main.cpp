@@ -11,8 +11,8 @@
 
 #include "Reads.h"
 #include "KmerCode.h"
-#include "Store.h"
-#include "StoreCQF.h"
+//#include "Store.h"
+#include "StoreBF.h"
 #include "ErrorCorrection.h"
 
 char nucToNum[26] = { 0, -1, 1, -1, -1, -1, 2, 
@@ -137,9 +137,9 @@ int main( int argc, char *argv[] )
 	Reads pairedReads ;
 
 	struct _summary summary ;
-
+	
 	//Store kmers ;
-	StoreCQF kmers ;
+	StoreBF kmers;
 	FILE *fpJellyFishDump = NULL ;
 	char buffer[100] ;
 
