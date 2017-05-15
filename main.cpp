@@ -11,7 +11,7 @@
 
 #include "Reads.h"
 #include "KmerCode.h"
-#include "Store.h"
+//#include "Store.h"
 #include "StoreCQF.h"
 #include "ErrorCorrection.h"
 

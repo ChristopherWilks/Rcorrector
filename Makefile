@@ -1,5 +1,5 @@
 CXX = g++ -g -std=c++11
-CXXFLAGS= -Wall #-O3 #-std=c++0x
+CXXFLAGS= -Wall -O3 #-std=c++0x
 LINKFLAGS = -I . -lpthread -lz 
 DEBUG=
 jellyfishPath = `which jellyfish`
